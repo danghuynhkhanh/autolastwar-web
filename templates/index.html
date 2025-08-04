@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }}</title>
+  <title>AUTO LASTWAR</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
@@ -61,19 +61,54 @@
 </head>
 <body>
   <div class="container">
-    <h1>{{ title }}</h1>
+    <h1>AUTO LASTWAR</h1>
+
     <a href="#" class="btn-download" onclick="downloadFile(); return false;">Tải phần mềm</a>
-    <iframe src="{{ video_link }}" allowfullscreen></iframe>
+
+    <iframe src="https://www.youtube.com/embed/lVdjZxjBlvA" allowfullscreen></iframe>
 
     <div class="usage">
-      <h4>Hướng dẫn sử dụng</h4>
-      <p>{{ usage|safe }}</p>
+      <h4>Hướng dẫn tải</h4>
+      <p>
+        👉🏽 Bấm tải phầm mềm (cấp quyền tải file nếu trình duyệt yêu cầu).<br>
+        👉🏽 Mở file autolastwar.exe vừa tải (cấp quyền: "More info" -> "Run anyway" nếu windows yêu cầu).<br>
+        👉🏽 Phần mềm yêu cầu nhập key, copy ID máy trên hộp thoại, gửi cho admin để nhận key.<br>
+        👉🏽 Nhập key và kích hoạt để sử dụng.<br>
+        👉🏽 Sau khi kích hoạt thành công, một file license.key được tạo ra tự động. Để file license.key cùng thư mục với file autolastwar.exe (không cần nhập key những lần sau). Bắt đầy cày RSS thôi...
+      </p>
     </div>
 
+
+<p>{{ guide }}</p>
+
+<!-- ✅ Đoạn giới thiệu tính năng thêm vào tại đây -->
+<h3 class="mt-5">✨ Tính năng</h3>
+<ul>
+  <li>💀 Tự động tham gia Rally ở sự kiện xác sống. Giải pháp treo máy kiếm thật nhiều RSS.</li>
+  <li>👏🏾 Tự động bắt tay.</li>
+  <li>👆 Tích hợp autoclick để đào kho báu.</li>
+  <li>💬 Liên hệ admin để lấy key kích hoạt bản quyền.</li>
+</ul>
+
     <div class="contact">
-      <h4>Liên hệ admin</h4>
-      <p>{{ contact|safe }}</p>
+      <h4>Liên hệ</h4>
+      <p>
+        💬 Zalo: 082.7979.008<br>
+        💬 Facebook: https://www.facebook.com/autolastwar
+      </p>
     </div>
+
+
+<p>{{ guide }}</p>
+
+<!-- ✅ Đoạn giới thiệu tính năng thêm vào tại đây -->
+<h3 class="mt-5">👨🏻‍💻 Bảng giá key</h3>
+<ul>
+  <li>1 tháng: 50.000đ</li>
+  <li>3 tháng: 100.000đ</li>
+  <li>6 tháng: 180.000đ</li>
+  <li>12 tháng: 300.000đ</li>
+</ul>
 
     <footer>&copy; 2025 AUTO LASTWAR. All rights reserved.</footer>
   </div>
@@ -81,7 +116,8 @@
   <script>
     function downloadFile() {
       const link = document.createElement('a');
-      link.href = "{{ download_link|safe }}";
+      // 👉 Thay link Dropbox của bạn vào đây
+      link.href = "https://www.dropbox.com/scl/fi/s19u3nb2h3jt857k3hoec/autolastwar.exe?rlkey=81mhbiyretd533027d0n1s3g9&st=k03n09z7&dl=1";
       link.download = "autolastwar.exe";
       document.body.appendChild(link);
       link.click();
