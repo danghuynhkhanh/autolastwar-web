@@ -1,6 +1,5 @@
 from flask import Flask, render_template, jsonify
-from datetime import datetime
-import pytz
+from datetime import datetime, timezone, timedelta
 
 app = Flask(__name__)
 
@@ -20,9 +19,8 @@ def admin94():
 # -------------------
 @app.route('/time')
 def get_time():
-    tz = pytz.timezone("Asia/Ho_Chi_Minh")
-    now = datetime.now(tz)
-    return jsonify({"datetime": now.isoformat()})
+    vn_time = datetime.now(timezone(timedelta(hours=7)))
+    return jsonify({"datetime": vn_time.isoformat()})
 
 if __name__ == '__main__':
     app.run(debug=True)
