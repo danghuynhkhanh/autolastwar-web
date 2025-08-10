@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, send_file
+from flask import Flask, render_template, jsonify, redirect
 from datetime import datetime, timezone, timedelta
 import json, os
 
@@ -24,13 +24,13 @@ def home():
     save_stats(stats)
     return render_template('index.html')
 
-# ---- Nút tải ----
+# ---- Tải phần mềm (đếm + chuyển hướng Dropbox) ----
 @app.route('/download')
 def download():
     stats = load_stats()
     stats["downloads"] += 1
     save_stats(stats)
-    return send_file("autolastwar.exe", as_attachment=True)
+    return redirect("https://www.dropbox.com/scl/fi/azst2c5lfdfhiim2nw0hq/autolastwar.exe?rlkey=89zxjsb7ao3nujzfmm4hq5jos&st=nz9nzrq7&dl=1")
 
 # ---- Trang xem thống kê ----
 @app.route('/view')

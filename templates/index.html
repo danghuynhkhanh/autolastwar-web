@@ -63,7 +63,8 @@
   <div class="container">
     <h1>AUTO LASTWAR</h1>
 
-    <a href="#" class="btn-download" onclick="downloadFile(); return false;">Tải phần mềm</a>
+    <!-- ✅ Chỉ đổi href sang /download -->
+    <a href="/download" class="btn-download">Tải phần mềm</a>
 
     <iframe src="https://www.youtube.com/embed/70FkNOfqr0Q" allowfullscreen></iframe>
 
@@ -110,11 +111,5 @@
 
     <footer>&copy; 2025 AUTO LASTWAR. All rights reserved.</footer>
   </div>
-
-  <script>
-    function downloadFile() {
-      window.location.href = "/download"; // Gọi route /download để tăng bộ đếm
-    }
-  </script>
 </body>
 </html>
