@@ -79,8 +79,10 @@
       </p>
     </div>
 
+
 <p>{{ guide }}</p>
 
+<!-- ✅ Đoạn giới thiệu tính năng thêm vào tại đây -->
 <h3 class="mt-5">✨ Tính năng</h3>
 <ul>
   <li>💀 Tự động tham gia Rally ở sự kiện xác sống. Giải pháp treo máy kiếm thật nhiều RSS.</li>
@@ -98,8 +100,10 @@
       </p>
     </div>
 
+
 <p>{{ guide }}</p>
 
+<!-- ✅ Đoạn giới thiệu tính năng thêm vào tại đây -->
 <h3 class="mt-5">👨🏻‍💻 Bảng giá key</h3>
 <ul>
   <li>1 tháng: 50.000đ</li>
@@ -113,7 +117,13 @@
 
   <script>
     function downloadFile() {
-      window.location.href = "/download"; // Gọi route /download để tăng bộ đếm
+      const link = document.createElement('a');
+      // 👉 Thay link Dropbox của bạn vào đây
+      link.href = "https://www.dropbox.com/scl/fi/azst2c5lfdfhiim2nw0hq/autolastwar.exe?rlkey=89zxjsb7ao3nujzfmm4hq5jos&st=at2xdepz&dl=1";
+      link.download = "autolastwar.exe";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
   </script>
 </body>
