@@ -27,6 +27,11 @@ def load_stats():
     c = conn.cursor()
     c.execute("SELECT views, downloads FROM stats WHERE id=1")
     row = c.fetchone()
+    if row is None:
+        # Nếu chưa có dữ liệu thì thêm mới
+        c.execute("INSERT INTO stats (views, downloads) VALUES (0, 0)")
+        conn.commit()
+        row = (0, 0)
     conn.close()
     return {"views": row[0], "downloads": row[1]}
 
@@ -52,7 +57,7 @@ def download():
     stats = load_stats()
     stats["downloads"] += 1
     save_stats(stats)
-    return redirect("https://www.dropbox.com/scl/fi/azst2c5lfdfhiim2nw0hq/autolastwar.exe?rlkey=89zxjsb7ao3nujzfmm4hq5jos&st=nz9nzrq7&dl=1")
+    return redirect("https://www.dropbox.com/scl/fi/azst2c5lfdfhiim2nw0hq/autolastwar.exe?rlkey=89zxjsb7ao3nujzfmm4hq5jos&st=svo5t397&dl=1")
 
 # ---- Trang xem thống kê ----
 @app.route('/view')
