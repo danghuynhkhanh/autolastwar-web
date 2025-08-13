@@ -1,20 +1,42 @@
+import sqlite3
 from flask import Flask, render_template, jsonify, redirect
 from datetime import datetime, timezone, timedelta
-import json, os
 
 app = Flask(__name__)
-DATA_FILE = "stats.json"
+DB_FILE = "stats.db"
+
+# ---- Tạo database nếu chưa có ----
+def init_db():
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS stats (
+                    id INTEGER PRIMARY KEY,
+                    views INTEGER DEFAULT 0,
+                    downloads INTEGER DEFAULT 0
+                )''')
+    # Nếu chưa có dòng dữ liệu thì thêm vào
+    c.execute("SELECT COUNT(*) FROM stats")
+    if c.fetchone()[0] == 0:
+        c.execute("INSERT INTO stats (views, downloads) VALUES (0, 0)")
+    conn.commit()
+    conn.close()
 
 # ---- Hàm load và lưu thống kê ----
 def load_stats():
-    if not os.path.exists(DATA_FILE):
-        return {"views": 0, "downloads": 0}
-    with open(DATA_FILE, "r") as f:
-        return json.load(f)
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute("SELECT views, downloads FROM stats WHERE id=1")
+    row = c.fetchone()
+    conn.close()
+    return {"views": row[0], "downloads": row[1]}
 
 def save_stats(stats):
-    with open(DATA_FILE, "w") as f:
-        json.dump(stats, f)
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute("UPDATE stats SET views=?, downloads=? WHERE id=1",
+              (stats["views"], stats["downloads"]))
+    conn.commit()
+    conn.close()
 
 # ---- Trang chủ ----
 @app.route('/')
@@ -50,4 +72,5 @@ def get_time():
     return jsonify({"datetime": vn_time.isoformat()})
 
 if __name__ == '__main__':
+    init_db()
     app.run(debug=True)
