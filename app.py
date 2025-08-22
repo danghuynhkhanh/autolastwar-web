@@ -57,13 +57,13 @@ def download():
     stats = load_stats()
     stats["downloads"] += 1
     save_stats(stats)
-    return redirect("https://www.dropbox.com/scl/fi/7luzklvmhngbfh9599d50/autolastwar.exe?rlkey=eo5a0zg14aqpelult9qjqj4qn&st=br4yevjq&dl=1")
+    return redirect("https://www.dropbox.com/scl/fi/i8nfouze066brzdex4kcd/autolastwar.exe?rlkey=uf2ozr4jshbijflzcpwb83crz&st=qqo9j9fk&dl=1")
 
 # ---- Trang xem thống kê ----
 @app.route('/view')
 def view_stats():
     stats = load_stats()
-    return render_template('view.html', stats=stats)
+   return render_template('view.html', stats=stats)
 
 # ---- Trang tạo key ----
 @app.route('/admin94')
