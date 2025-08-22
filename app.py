@@ -63,7 +63,7 @@ def download():
 @app.route('/view')
 def view_stats():
     stats = load_stats()
-   return render_template('view.html', stats=stats)
+    return render_template('view.html', stats=stats)
 
 # ---- Trang tạo key ----
 @app.route('/admin94')
