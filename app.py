@@ -57,7 +57,7 @@ def download():
     stats = load_stats()
     stats["downloads"] += 1
     save_stats(stats)
-    return redirect("https://www.dropbox.com/scl/fi/6miurztx7oldoq69jfklq/autolastwar2.exe?rlkey=b03nlg0v72i94q73ir73xc7t1&st=ucna29h3&dl=1")
+    return redirect("https://www.dropbox.com/scl/fi/6jhmwlnm692ywjihfwbu1/auto_click_app.exe?rlkey=vusyepaf069g3vw9r44ja3e6z&st=9spx514x&dl=1")
 
 # ---- Trang xem thống kê ----
 @app.route('/view')
